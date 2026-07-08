@@ -1,0 +1,12 @@
+{
+  "name": "for-bunny-birthday-website",
+  "version": "1.0.0",
+  "description": "Personalized Birthday Website for Bhavana (Bunny)",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 8000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
