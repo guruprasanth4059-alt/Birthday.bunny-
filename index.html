@@ -1505,7 +1505,7 @@
   <canvas id="hearts-canvas"></canvas>
 
   <!-- Background Music Audio -->
-  <audio id="bg-music" loop>
+  <audio id="bg-music">
     <source src="music/birthday_song.mp3" type="audio/mpeg">
   </audio>
 
@@ -2093,6 +2093,9 @@
 
     function togglePlayback() {
       if (music.paused) {
+        if (music.currentTime === 0) {
+          music.currentTime = 60;
+        }
         music.play()
           .then(() => {
             syncMusicState(true);
@@ -2109,6 +2112,12 @@
 
     sidebarPlayBtn.addEventListener('click', togglePlayback);
     homePlayBtn.addEventListener('click', togglePlayback);
+
+    // Custom loop: when song ends, seek back to 60 seconds (1 minute) and play
+    music.addEventListener('ended', () => {
+      music.currentTime = 60;
+      music.play().catch(err => console.warn('Error looping music:', err));
+    });
 
     /* ==========================================
        3. 3D Dashboard Navigation & Page Transition
